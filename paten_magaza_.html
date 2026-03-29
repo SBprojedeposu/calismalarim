@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serhat Bulut</title>
+</head>
+
+
+<body>
+
+
+
+
+
+    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 10px;
+    margin-bottom: 30px; text-align: center;">
+    <input type="text" placeholder="Adınızı yazınız...">
+    <button class="modern-buton" onclick="SelamVer()">Gönder!</button>
+    </div>
+
+
+
+    <script>
+        function SelamVer() {
+            alert("Sitemize hoş geldiniz! Siparişiniz hazırlanıyor.");
+        }
+    </script>
+
+
+
+<table border="1">
+    <tr>
+        <th>paten modeli</th>
+        <th>tekerlek çapı</th>
+        <th>kullanım alanı</th>
+    </tr>
+
+    <tr>
+        <td>urban 80</td>
+        <td>80mm</td>
+        <td>şehir/slalom</td>
+    </tr>
+
+    <tr>
+        <td>wild forest</td>
+        <td>110mm</td>
+        <td>doğa/toprak</td>
+    </tr>
+</table>
+
+
+
+<style>
+    table {
+        width: 80%; /*sayfanın %80'ini kaplasın*/
+        border-collapse:  collapse;  /*çizgileri tek çizgi yapar, daha modern durur*/
+        margin-top: 20px;
+        font-family: arial, sans-serif;
+    }
+    th,td {
+        padding: 12px; /*hücrelerin içine nefes aldırır,genısletir*/
+        text-align: left;
+        border-bottom: 1px; solid: #ddd; /*alt alta çizgiler çeker*/
+    }
+    th {
+        background-color: #333;  /*başlık kısmı koyu gri yapar*/ 
+        color: white;  /*başlık yazılarını beyaz yapar*/
+    }
+    tr:hover {
+        background-color: #f5f5f5; /*fare ile üzerine gelince satır parlar */
+    }
+
+
+input{
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    font-family: arial, sans-serif;
+}
+
+input: :focus {
+    border-color: #ff7e00; /*bu kutuya tıklayınca trendyol turuncusu yanar*/
+}
+
+
+.modern-buton {
+    background-color: #ff7e00;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-left: 5px;
+}
+
+.modern-buton:hover {
+    background-color: #e67200;
+    transform: scale(1.05);
+}
+
+</style>
+
+
+
+<div style="text-align: center; margin-top: 20px;">
+<img
+src="https://www.patendeposu.com/idea/ch/21/myassets/products/439/seba-fr1-white-urban-paten-310.jpeg?revision=1774445096"
+
+alt="Beyaz Urban Paten"
+style="
+width: 300px;
+border-radius: 15px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+border: 3px solid #f5f5f5;
+transition: 0.3;
+"
+onmouseover="this.style.transform='scale(1.05)';"
+onmouseout="this.style.transform='scale(1)';"
+>
+
+ <p style="font-family: Arial, sans-serif; color: #555; font-size: 14px; margin-top: 10px;">
+<i>Hızı ve özgürlüğü hisset!</i>
+</p>
+</div>
+
+
+
+
+
+</body>
+
+
+</html>
