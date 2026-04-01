@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hakkımda</title>
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --surface: #141414;
+      --border: #222;
+      --text: #e8e8e8;
+      --muted: #555;
+      --accent: #c8f542;
+      --accent-dim: rgba(200, 245, 66, 0.08);
+      --font: 'Consolas', 'Courier New', monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 14px;
+      line-height: 1.75;
+      min-height: 100vh;
+      padding: 60px 24px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 640px;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Header ── */
+    header {
+      margin-bottom: 56px;
+    }
+
+    .prompt {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    .prompt span {
+      color: var(--accent);
+    }
+
+    h1 {
+      font-size: clamp(28px, 6vw, 40px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.1;
+    }
+
+    h1 em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .tagline {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 400px;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 32px 0;
+    }
+
+    /* ── Section ── */
+    section {
+      margin-bottom: 40px;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    section:nth-child(2) { animation-delay: 0.1s; }
+    section:nth-child(3) { animation-delay: 0.2s; }
+    section:nth-child(4) { animation-delay: 0.3s; }
+    section:nth-child(5) { animation-delay: 0.4s; }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    p {
+      color: #aaa;
+      font-size: 13.5px;
+      max-width: 560px;
+    }
+
+    /* ── Skills grid ── */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-size: 12px;
+      color: #888;
+      background: var(--surface);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      cursor: default;
+    }
+
+    .skill-tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    /* ── Experience list ── */
+    .exp-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4px 16px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exp-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .exp-role {
+      font-size: 13.5px;
+      color: var(--text);
+    }
+
+    .exp-company {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .exp-year {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+      padding-top: 2px;
+      white-space: nowrap;
+    }
+
+    /* ── Contact links ── */
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #888;
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .contact-link::before {
+      content: '→';
+      color: var(--muted);
+      transition: color 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .contact-link:hover {
+      color: var(--accent);
+    }
+
+    .contact-link:hover::before {
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 64px;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <p class="prompt"><span>~/hakkimda</span> $ whoami</p>
+      <h1>Merhaba, ben <em>Adınız</em>.</h1>
+      <p class="tagline">Yazılım geliştirici. Temiz kod yazmayı, sade tasarımı ve iyi kahveyi severim.</p>
+    </header>
+
+    <hr class="divider" />
+
+    <section>
+      <p class="section-label">// hakkımda</p>
+      <p>
+        İstanbul'da yaşayan, 5+ yıl deneyimli bir full-stack geliştiriciyim.
+        Kullanıcı odaklı ürünler inşa etmekten, karmaşık problemleri basit çözümlere
+        dönüştürmekten keyif alıyorum. Hem ön yüz hem de arka yüz tarafında rahatça çalışıyorum.
+      </p>
+    </section>
+
+    <section>
+      <p class="section-label">// yetenekler</p>
+      <div class="skills">
+        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">REST API</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">CSS</span>
+        <span class="skill-tag">Linux</span>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">// deneyim</p>
+      <ul class="exp-list">
+        <li class="exp-item">
+          <div>
+            <p class="exp-role">Senior Frontend Developer</p>
+            <p class="exp-company">TechStudio A.Ş.</p>
+          </div>
+          <p class="exp-year">2022 — günümüz</p>
+        </li>
+        <li class="exp-item">
+          <div>
+            <p class="exp-role">Full-Stack Developer</p>
+            <p class="exp-company">Dijital Ajans</p>
+          </div>
+          <p class="exp-year">2020 — 2022</p>
+        </li>
+        <li class="exp-item">
+          <div>
+            <p class="exp-role">Junior Developer</p>
+            <p class="exp-company">StartupLab</p>
+          </div>
+          <p class="exp-year">2018 — 2020</p>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <p class="section-label">// iletişim</p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:ornek@email.com">ornek@email.com</a>
+        <a class="contact-link" href="https://github.com" target="_blank">github.com/kullaniciadi</a>
+        <a class="contact-link" href="https://linkedin.com" target="_blank">linkedin.com/in/kullaniciadi</a>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2025 Adınız</span>
+      <span class="status">
+        <span class="dot"></span>
+        Yeni fırsatlara açığım
+      </span>
+    </footer>
+
+  </div>
+</body>
+</html>
